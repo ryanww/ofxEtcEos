@@ -15,8 +15,6 @@ ofxEtcEos::ofxEtcEos(){
     comsEnabled = false;
 }
 ofxEtcEos::~ofxEtcEos(){
-    udpTx.Close();
-    udpRx.Close();
     stopThread();
 }
 
@@ -74,6 +72,7 @@ void ofxEtcEos::sendCommandToConsoleCmdLine(string _cmd){
         c<<"$ ";
         c<<_cmd;
         c<<"\r";
+        udpTx.Send(c.str().c_str(), c.str().length());
     } else {
         ofLogError("ofxEtcEos")<<"Coms are disabled - can't send command to console";
     }
@@ -83,6 +82,7 @@ void ofxEtcEos::sendCommandToEventHandler(string _cmd){
         stringstream c;
         c<<_cmd;
         c<<"\r";
+        udpTx.Send(c.str().c_str(), c.str().length());
     } else {
         ofLogError("ofxEtcEos")<<"Coms are disabled - can't send command to console";
     }
