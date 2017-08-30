@@ -39,7 +39,7 @@ void ofxEtcEos::setupComs(){
     if (twoWayMode){
         //Setup UDP Receiver
         udpRx.Create();
-        udpRx.Bind(51302);
+        udpRx.Bind(port+1);
         udpRx.SetNonBlocking(true);
     }
     ofLogVerbose("ofxEtcEos")<<"Initializing coms complete";
