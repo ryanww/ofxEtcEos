@@ -48,6 +48,7 @@ void ofxEtcEos::setupComs(){
 //Running
 #pragma mark RUNNING
 void ofxEtcEos::threadedFunction(){
+    setThreadName("ofxEtcEos");
     while (isThreadRunning()){
         
         //UDP RX
